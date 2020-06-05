@@ -1,0 +1,30 @@
+// Global variables
+$graph-svg-color: #fff;
+$graph-cell-color: #ebedf0;
+
+html, body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph__container{
+    width: 500px;
+}
+
+.graph__svg{
+    background-color: $graph-svg-color;
+}
+
+.graph__cell{
+    fill: $graph-cell-color;
+}
