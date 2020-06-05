@@ -47,4 +47,20 @@ export default class Svg{
         _rect = this.DOMELement.appendChild(_rect);
         return _rect;
     }
+
+    // Appends and returns an svg text element
+    text(x,y,dx,dy,id,className, text){
+        let _text = document.createElementNS(Svg.SVG_NS, 'text');
+        _text.setAttribute('x', x);
+        _text.setAttribute('y', y);
+        _text.setAttribute('dx', dx);
+        _text.setAttribute('dy', dy);
+        _text.setAttribute('id',id);
+        _text.setAttribute('class',className);
+        _text.textContent = text;
+
+        // Append it to the DOM
+        _text = this.DOMELement.appendChild(_text);
+        return _text;
+    }
 }
