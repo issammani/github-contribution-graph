@@ -2,6 +2,7 @@
 
 A clone of the famous github contribution graph.
 
+![screenshot](https://raw.githubusercontent.com/issammani/github-contribution-graph/assets/screen_capture.png)
 ## Usage
 
 - Clone this repo.
