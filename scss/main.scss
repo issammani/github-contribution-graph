@@ -1,12 +1,21 @@
 // Global variables
 $graph-svg-color: #fff;
 $graph-cell-color: #ebedf0;
+$graph-font-color: #767676;
+$contribution-level-0 : #ebedf0;
+$contribution-level-1 : #c6e48b; 
+$contribution-level-2 : #7bc96f;
+$contribution-level-3 : #239a3b;
+$contribution-level-4 : #196127;
+
+
 
 html, body{
     padding: 0;
     margin: 0;
     height: 100%;
     width: 100%;
+    font-family: sans-serif;
 }
 
 .wrapper{
@@ -27,4 +36,29 @@ html, body{
 
 .graph__cell{
     fill: $graph-cell-color;
+}
+
+.graph__wday, .graph__month{
+    font-size: 9px;
+    fill: #767676;
+}
+
+.contribution__level__0 {
+    fill: $contribution-level-0;
+}
+
+.contribution__level__1 {
+    fill: $contribution-level-1;
+}
+
+.contribution__level__2 {
+    fill: $contribution-level-2;
+}
+
+.contribution__level__3 {
+    fill: $contribution-level-3;
+}
+
+.contribution__level__4 {
+    fill: $contribution-level-4;
 }
