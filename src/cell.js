@@ -24,6 +24,6 @@ export default class Cell{
         const _rect = this.svgContainer.rect(this.x, this.y, this.width, this.height, this.id, this.class);
         // Add date and count dataset attributes
         _rect.dataset.date = this.date;
-        _rect.dataset.cout = this.count;
+        _rect.dataset.count = this.count;
     }
 }
