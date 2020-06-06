@@ -64,6 +64,12 @@ export default class Graph{
             }     
         }
 
+        // Show weekdays
+        for(let i = 1; i < 7; i+= 2){
+            // Show short day
+            _svg.text( 0, (i+1) * (this.cellCize + this.gap) + this.cellCize, 0, 0, '', 'graph__wday', getDayShortName(i));
+        }
+
         return _svg;
     }
 
