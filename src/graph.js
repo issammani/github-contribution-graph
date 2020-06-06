@@ -15,39 +15,41 @@ export default class Graph{
     }
 
     createElement(){
+
         // Calculate width and height
         let _width = document.querySelector(this.containerSelector).clientWidth;
-        const _height = 7 * (this.cellCize + this.gap);
+        const _height = 8 * (this.cellCize + this.gap); // 7+1 to account for the month row
 
         // Get number of possible cells
-        const _numberOfCells = Math.floor(_width / (this.cellCize + this.gap));
+        const _numberOfCells = Math.floor((_width - 2 * (this.cellCize + this.gap)) / (this.cellCize + this.gap));
 
-        // Set width to fit graph (+2 to account for the weekday column)
-        _width = (_numberOfCells + 2)  * (this.cellCize + this.gap);
-
+        // Set width to fit graph ( +2 to account for the weekday column)
+        _width = (_numberOfCells + 2) * (this.cellCize + this.gap);
         // Create a new svg
         const _svg = new Svg({parentSelector: this.containerSelector, width: _width, height: _height, class: 'graph__svg'});
 
-        let i = 0, j = 0;
-        let contributionCountMax = 100;
+        let today = new Date();
+        let i = _numberOfCells, j = today.getDay() + 1;
+        let contributionCountMax = 100; // Should change to take as prop
+        let currentMonth = today.getMonth();
 
         // Create cells
-        for(let contribution of generateMockContributions(7* _numberOfCells, contributionCountMax, 4)){
+        for(let contribution of generateMockContributions(7 * _numberOfCells - 7 + today.getDate() + 1 , contributionCountMax, 4)){
             // Render cells column-wise
             new Cell({
                 svgContainer: _svg, 
-                x: (i + 2) * (this.cellCize + this.gap),  // +2 to account for weekday text
-                y: j * (this.cellCize + this.gap), 
+                x: (i + 1) * (this.cellCize + this.gap),
+                y: j * (this.cellCize + this.gap),
                 date: contribution.day.toLocaleDateString('en-GB'), 
                 count: contribution.count, 
                 class: `graph__cell contribution__level__${contribution.chunkIndex}`
             });
 
-            if(j != 0 && (j+1) % 7 === 0 ){
-                i++;
-            }
-            
-            j = (j + 1) % 7;  
+            j = (j - 1) % 7;
+            if(j === 0){
+                j = 7;
+                i--;
+            }     
         }
 
         return _svg;
