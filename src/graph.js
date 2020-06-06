@@ -35,6 +35,18 @@ export default class Graph{
 
         // Create cells
         for(let contribution of generateMockContributions(7 * _numberOfCells - 7 + today.getDate() + 1 , contributionCountMax, 4)){
+            // Show month text
+            if(j === 1 && currentMonth != contribution.day.getMonth() ){
+                console.log('here', currentMonth, contribution.day.getMonth());
+                console.log(i, j);
+
+                // Show short month name on the next column
+                _svg.text( (i + 2) * (this.cellCize + this.gap), this.cellCize, 0, 0, '', 'graph__month', getMonthShortName(currentMonth));
+
+                // Change current month
+                currentMonth = contribution.day.getMonth();
+            }
+            
             // Render cells column-wise
             new Cell({
                 svgContainer: _svg, 
